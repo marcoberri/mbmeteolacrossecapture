@@ -19,5 +19,9 @@ This app using [te923.fukz.org](http://te923.fukz.org/documentation.html)
 	sudo gcc -Wall -lusb -o te923con te923con.c te923usb.c te923com.c `pkg-config --libs libusb`
 	sudo cp te923con /usr/bin
 
+#Configuration
+
+* maven --> mvn package
+* src/main/resources/configuration.properties
 
 
