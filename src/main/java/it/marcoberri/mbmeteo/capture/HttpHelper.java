@@ -1,4 +1,4 @@
-package it.marcoberri.mbmetreo.capture;
+package it.marcoberri.mbmeteo.capture;
 
 import java.io.File;
 import java.io.IOException;

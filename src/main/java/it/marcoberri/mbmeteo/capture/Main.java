@@ -1,4 +1,4 @@
-package it.marcoberri.mbmetreo.capture;
+package it.marcoberri.mbmeteo.capture;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
