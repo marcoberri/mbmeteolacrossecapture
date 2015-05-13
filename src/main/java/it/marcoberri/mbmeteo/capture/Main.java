@@ -46,9 +46,9 @@ public class Main {
 			System.exit(1);
 		}
 		Options options = new Options();
-		options.addOption("s", "send-line", false, "send data with command: [" + ConfigurationHelper.getProperties().getProperty("app.command.single") + "] to url: [" + ConfigurationHelper.getProperties().getProperty("app.target.url.single") + "] store backup post in [" + ConfigurationHelper.getProperties().getProperty("app.file.save.backup") + "]");
-		options.addOption("d", "send-dump", false, "send data with command: [" + ConfigurationHelper.getProperties().getProperty("app.command.dump") + "] to url: [" + ConfigurationHelper.getProperties().getProperty("app.target.url.dump") + "] store backup post in [" + ConfigurationHelper.getProperties().getProperty("app.file.save.backup") + "]");
-		options.addOption("f", "send-from.file", true, "send file to url: [" + ConfigurationHelper.getProperties().getProperty("app.target.url.dump") + "] no store backup in file");
+		options.addOption("s", "post-line", false, "post data with command: [" + ConfigurationHelper.getProperties().getProperty("app.command.single") + "] to url: [" + ConfigurationHelper.getProperties().getProperty("app.target.url.single") + "] store backup post in [" + ConfigurationHelper.getProperties().getProperty("app.file.save.backup") + "]");
+		options.addOption("d", "post-dump", false, "post data with command: [" + ConfigurationHelper.getProperties().getProperty("app.command.dump") + "] to url: [" + ConfigurationHelper.getProperties().getProperty("app.target.url.dump") + "] store backup post in [" + ConfigurationHelper.getProperties().getProperty("app.file.save.backup") + "]");
+		options.addOption("f", "post-from-file", true, "post file to url: [" + ConfigurationHelper.getProperties().getProperty("app.target.url.dump") + "] no store backup in file");
 		options.addOption("h", "help", false, "this help");
 
 		CommandLineParser parser = new DefaultParser();

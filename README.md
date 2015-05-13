@@ -24,4 +24,14 @@ This app using [te923.fukz.org](http://te923.fukz.org/documentation.html)
 * maven --> mvn package
 * src/main/resources/configuration.properties
 
+#Usage
+	usage: java -jar <jar_name>
+	Version:0.0.1-SNAPSHOT
+	build: 2015-05-13 14:14
+	-d,--post-dump              post data with command: [/usr/bin/te923con -d] to url: [http://meteo.marcoberri.it/data/addData] store backup post in [/home/pi/meteo/backup.log]
+	-f,--post-from-file <arg>   post file to url: [http://meteo.marcoberri.it/data/addData] no store backup in file
+	-h,--help                   this help
+	-s,--post-line              post data with command: [/usr/bin/te923con] to url: [http://meteo.marcoberri.it/data/addData] store backup post in [/home/pi/meteo/backup.log]
+
+
 
