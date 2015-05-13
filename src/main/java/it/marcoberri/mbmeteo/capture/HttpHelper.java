@@ -18,15 +18,17 @@ public class HttpHelper {
 
 	final static String USER_AGENT = "Mozilla/5.0";
 
-	public static boolean sendPostData(String url, String data) {
+	public static boolean sendPostData(String url, String data, boolean backup) {
 
 		CloseableHttpClient httpclient = null;
 		HttpResponse response = null;
-		final File backupFile = new File(ConfigurationHelper.getProperties().getProperty("app.file.save.backup"));
-		try {
-			FileUtils.writeStringToFile(backupFile, data + "\n", true);
-		} catch (final IOException e1) {
-			e1.printStackTrace();
+		if (backup) {
+			final File backupFile = new File(ConfigurationHelper.getProperties().getProperty("app.file.save.backup"));
+			try {
+				FileUtils.writeStringToFile(backupFile, data + "\n", true);
+			} catch (final IOException e1) {
+				e1.printStackTrace();
+			}
 		}
 		try {
 			httpclient = HttpClients.createMinimal();
