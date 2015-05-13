@@ -38,14 +38,17 @@
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>2.5.4</version>
-				<configuration>
-					<finalName>MBMeteoCapture</finalName>
-					<archive>
-						<manifest>
-							<mainClass>it.marcoberri.mbmeteo.capture.Main</mainClass>
-						</manifest>
-					</archive>
-				</configuration>
+					<configuration>
+						<descriptorRefs>
+							<descriptorRef>jar-with-dependencies</descriptorRef>
+						</descriptorRefs>
+						<finalName>MBMeteoCapture</finalName>
+						<archive>
+							<manifest>
+								<mainClass>it.marcoberri.mbmeteo.capture.Main</mainClass>
+							</manifest>
+						</archive>
+						</configuration>
 			</plugin>
 		</plugins>
 	</build>

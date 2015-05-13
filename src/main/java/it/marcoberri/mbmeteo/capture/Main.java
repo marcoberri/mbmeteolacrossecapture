@@ -40,6 +40,11 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
+		
+		if(ConfigurationHelper.getProperties() == null){
+			System.out.println("no properties loaded");
+			System.exit(1);
+		}
 		Options options = new Options();
 		options.addOption("s", "send-line", false, "send data with command: [" + ConfigurationHelper.getProperties().getProperty("app.command.single") + "] to url: [" + ConfigurationHelper.getProperties().getProperty("app.target.url.single") + "] store backup post in [" + ConfigurationHelper.getProperties().getProperty("app.file.save.backup") + "]");
 		options.addOption("d", "send-dump", false, "send data with command: [" + ConfigurationHelper.getProperties().getProperty("app.command.dump") + "] to url: [" + ConfigurationHelper.getProperties().getProperty("app.target.url.dump") + "] store backup post in [" + ConfigurationHelper.getProperties().getProperty("app.file.save.backup") + "]");
