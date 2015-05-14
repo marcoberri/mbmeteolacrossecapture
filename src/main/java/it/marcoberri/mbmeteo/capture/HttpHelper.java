@@ -25,7 +25,7 @@ public class HttpHelper {
 		if (backup) {
 			final File backupFile = new File(ConfigurationHelper.getProperties().getProperty("app.file.save.backup"));
 			try {
-				FileUtils.writeStringToFile(backupFile, data + "\n", true);
+				FileUtils.writeStringToFile(backupFile, data, true);
 			} catch (final IOException e1) {
 				e1.printStackTrace();
 			}
