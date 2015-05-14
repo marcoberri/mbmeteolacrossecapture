@@ -75,12 +75,14 @@ public class Main {
 			} else if (cmd.hasOption("d")) {
 				System.out.println("start with -d options");
 				String output = obj.executeCommand(ConfigurationHelper.getProperties().getProperty("app.command.dump"));
+				System.out.println(output);
 				String data[] = output.split("\n");
+				
 				if (data.length <= 1)
 					data = output.split(" ");
 
 				for (String d : data) {
-					if (d == null || d.equalsIgnoreCase(""))
+					if (d == null || d.equalsIgnoreCase("") || d.equalsIgnoreCase(" "))
 						continue;
 					try {
 						HttpHelper.sendPostData(ConfigurationHelper.getProperties().getProperty("app.target.url.dump"), d, true);

@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>it.marcoberri</groupId>
 	<artifactId>mbmeteolacrosse.caputre</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.2</version>
 	<name>MBMeteoLaCrosseCapute</name>
 	<description>Capture data from lacrosse WS1640 and send to site</description>
 
