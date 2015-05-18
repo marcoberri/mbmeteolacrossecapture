@@ -25,6 +25,10 @@ public class HttpHelper {
 		if (backup) {
 			final File backupFile = new File(ConfigurationHelper.getProperties().getProperty("app.file.save.backup"));
 			try {
+				if (data.lastIndexOf("\n") == -1) {
+					data += "\n";
+				}
+
 				FileUtils.writeStringToFile(backupFile, data, true);
 			} catch (final IOException e1) {
 				e1.printStackTrace();

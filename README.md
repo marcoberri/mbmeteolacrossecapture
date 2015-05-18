@@ -21,7 +21,7 @@ This app using [te923.fukz.org](http://te923.fukz.org/documentation.html)
 
 #Configuration
 
-* maven --> mvn package
+* maven --> mvn clean assembly:assembly
 * src/main/resources/configuration.properties
 
 #Usage
