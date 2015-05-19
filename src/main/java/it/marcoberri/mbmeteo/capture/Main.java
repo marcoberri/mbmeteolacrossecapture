@@ -49,6 +49,7 @@ public class Main {
 		options.addOption("s", "post-line", false, "post data with command: [" + ConfigurationHelper.getProperties().getProperty("app.command.single") + "] to url: [" + ConfigurationHelper.getProperties().getProperty("app.target.url.single") + "] store backup post in [" + ConfigurationHelper.getProperties().getProperty("app.file.save.backup") + "]");
 		options.addOption("d", "post-dump", false, "post data with command: [" + ConfigurationHelper.getProperties().getProperty("app.command.dump") + "] to url: [" + ConfigurationHelper.getProperties().getProperty("app.target.url.dump") + "] store backup post in [" + ConfigurationHelper.getProperties().getProperty("app.file.save.backup") + "]");
 		options.addOption("f", "post-from-file", true, "post file to url: [" + ConfigurationHelper.getProperties().getProperty("app.target.url.dump") + "] no store backup in file");
+		options.addOption("r", "rename-file-post-from-file", false, "rename file after post file with -f");
 		options.addOption("h", "help", false, "this help");
 
 		CommandLineParser parser = new DefaultParser();
@@ -66,6 +67,7 @@ public class Main {
 				System.out.println(output);
 
 				try {
+					
 					HttpHelper.sendPostData(ConfigurationHelper.getProperties().getProperty("app.target.url.single"), output, true);
 				} catch (final Exception e) {
 					e.printStackTrace();
@@ -120,6 +122,11 @@ public class Main {
 						e.printStackTrace();
 						System.exit(1);
 					}
+				}
+				
+				if (cmd.hasOption("r")) {
+					File f = new File( cmd.getOptionValue("f"));
+					f.renameTo(new File(cmd.getOptionValue("f") + "_" + System.currentTimeMillis()));
 				}
 
 			} else {
