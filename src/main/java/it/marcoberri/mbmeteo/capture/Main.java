@@ -40,13 +40,14 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		
-		if(ConfigurationHelper.getProperties() == null){
+
+		if (ConfigurationHelper.getProperties() == null) {
 			System.out.println("no properties loaded");
 			System.exit(1);
 		}
 		Options options = new Options();
 		options.addOption("s", "post-line", false, "post data with command: [" + ConfigurationHelper.getProperties().getProperty("app.command.single") + "] to url: [" + ConfigurationHelper.getProperties().getProperty("app.target.url.single") + "] store backup post in [" + ConfigurationHelper.getProperties().getProperty("app.file.save.backup") + "]");
+		options.addOption("sys", "post-system-line", false, "post system data with command: [" + ConfigurationHelper.getProperties().getProperty("app.command.system") + "] to url: [" + ConfigurationHelper.getProperties().getProperty("app.target.url.system") + "]");
 		options.addOption("d", "post-dump", false, "post data with command: [" + ConfigurationHelper.getProperties().getProperty("app.command.dump") + "] to url: [" + ConfigurationHelper.getProperties().getProperty("app.target.url.dump") + "] store backup post in [" + ConfigurationHelper.getProperties().getProperty("app.file.save.backup") + "]");
 		options.addOption("f", "post-from-file", true, "post file to url: [" + ConfigurationHelper.getProperties().getProperty("app.target.url.dump") + "] no store backup in file");
 		options.addOption("r", "rename-file-post-from-file", false, "rename file after post file with -f");
@@ -61,13 +62,28 @@ public class Main {
 			// comando singolo
 			Main obj = new Main();
 
-			if (cmd.hasOption("s")) {
+			if (cmd.hasOption("sys")) {
+				System.out.println("start with -sys options");
+
+				String output = obj.executeCommand(ConfigurationHelper.getProperties().getProperty("app.command.system"));
+				System.out.println(output);
+
+				System.out.println("...in progresss notting post data");
+				/*
+				 * try {
+				 * 
+				 * HttpHelper.sendPostData(ConfigurationHelper.getProperties().
+				 * getProperty("app.target.url.system"), output, false); } catch
+				 * (final Exception e) { e.printStackTrace(); System.exit(1); }
+				 */
+
+			} else if (cmd.hasOption("s")) {
 				System.out.println("start with -s options");
 				String output = obj.executeCommand(ConfigurationHelper.getProperties().getProperty("app.command.single"));
 				System.out.println(output);
 
 				try {
-					
+
 					HttpHelper.sendPostData(ConfigurationHelper.getProperties().getProperty("app.target.url.single"), output, true);
 				} catch (final Exception e) {
 					e.printStackTrace();
@@ -79,7 +95,7 @@ public class Main {
 				String output = obj.executeCommand(ConfigurationHelper.getProperties().getProperty("app.command.dump"));
 				System.out.println(output);
 				String data[] = output.split("\n");
-				
+
 				if (data.length <= 1)
 					data = output.split(" ");
 
@@ -123,9 +139,9 @@ public class Main {
 						System.exit(1);
 					}
 				}
-				
+
 				if (cmd.hasOption("r")) {
-					File f = new File( cmd.getOptionValue("f"));
+					final File f = new File(cmd.getOptionValue("f"));
 					f.renameTo(new File(cmd.getOptionValue("f") + "_" + System.currentTimeMillis()));
 				}
 
