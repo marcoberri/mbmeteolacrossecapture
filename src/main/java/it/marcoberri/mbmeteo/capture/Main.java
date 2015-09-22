@@ -69,14 +69,15 @@ public class Main {
 				System.out.println(output);
 
 				System.out.println("...in progresss notting post data");
-				/*
-				 * try {
-				 * 
-				 * HttpHelper.sendPostData(ConfigurationHelper.getProperties().
-				 * getProperty("app.target.url.system"), output, false); } catch
-				 * (final Exception e) { e.printStackTrace(); System.exit(1); }
-				 */
 
+				try {
+
+					HttpHelper.sendPostData(ConfigurationHelper.getProperties().getProperty("app.target.url.system"), output, true);
+				} catch (final Exception e) {
+					e.printStackTrace();
+					System.exit(1);
+				}
+				
 			} else if (cmd.hasOption("s")) {
 				System.out.println("start with -s options");
 				String output = obj.executeCommand(ConfigurationHelper.getProperties().getProperty("app.command.single"));
